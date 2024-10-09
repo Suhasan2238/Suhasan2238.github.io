@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base: FD150 and A35</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const KnowledgeBase = () => {
+            const [activeComponent, setActiveComponent] = React.useState(null);
+
+            const componentData = {
+                FD150: `CHOOSE ERASE.
+CHOOSE RUN.
+EREASES CURRENT ACCOUNT THAT IS ON THERE.
+Once Earse is Completed:
+PROGRAMMING FD150/130**
+YELLOW PORT:INTERNET CABLE
+USB:BLACK
+POWER CABLE:LOCATED ON THE LEFT SIDE.`,
+                A35: `HIT DOWNLOAD.
+CHOOSE PORT.
+    *IP=GDSPROD.FIRSTDATA.COM
+    *PORT:443.
+PRESS ENTER AND SAVE.
+CHOOSE FILE.
+ENTER DOWNLOAD ID.
+MID=NOTHING.
+FD 150 APN=0/FD130 APN=3.
+FD 150 FNAME=GT3/FD 130 FNAME=GT2
+PRESS ENTER.
+CHOOSE RUN.
+"TRANSMISSON COMPLETE."
+PRESS RED BUTTON 3 TIMES.
+ENTER PASSWORD(990712).
+PRESS ENTER.`
+            };
+
+            return (
+                <div className="container mx-auto p-4">
+                    <h1 className="text-3xl font-bold mb-4">Knowledge Base: FD150 and A35</h1>
+                    <div className="flex space-x-4 mb-4">
+                        <button
+                            className="bg-blue-500 text-white px-4 py-2 rounded"
+                            onClick={() => setActiveComponent('FD150')}
+                        >
+                            FD150
+                        </button>
+                        <button
+                            className="bg-green-500 text-white px-4 py-2 rounded"
+                            onClick={() => setActiveComponent('A35')}
+                        >
+                            A35
+                        </button>
+                    </div>
+                    {activeComponent && (
+                        <div className="bg-white p-4 rounded shadow">
+                            <h2 className="text-2xl font-bold mb-2">{activeComponent}</h2>
+                            <pre className="whitespace-pre-wrap">{componentData[activeComponent]}</pre>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        ReactDOM.render(<KnowledgeBase />, document.getElementById('root'));
+    </script>
+</body>
+</html>
